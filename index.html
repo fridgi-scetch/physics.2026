@@ -16,12 +16,14 @@ body {
     line-height: 1.6;
 }
 
+/* ========================= */
+/* Заголовок                 */
+/* ========================= */
 header {
     background: linear-gradient(90deg,#0f2027,#203a43,#2c5364);
     text-align: center;
     padding: 20px 10px;
 }
-
 header h1 {
     margin:0;
     font-size:2.5em;
@@ -29,98 +31,76 @@ header h1 {
 }
 
 /* ========================= */
-/* Навигация по разделам      */
-/* ========================= */
-nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    background: #222;
-    padding: 10px 0;
-}
-nav button {
-    margin: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    border:none;
-    border-radius:10px;
-    background: #ff7f50;
-    cursor: pointer;
-    transition: 0.3s;
-}
-nav button:hover {
-    background:#ffa07a;
-    transform: scale(1.05);
-}
-
-/* ========================= */
-/* Основной контейнер        */
+/* Контейнер контента        */
 /* ========================= */
 .container {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 20px auto;
     padding: 10px;
 }
 
 /* ========================= */
-/* Карточки с терминами      */
+/* Разделы с кнопками        */
 /* ========================= */
-.term-card {
-    background: rgba(255,255,255,0.05);
-    border-radius: 15px;
-    padding:15px;
-    margin-bottom:15px;
-    transition: transform 0.3s, box-shadow 0.3s;
+.section {
+    margin-bottom: 30px;
 }
-.term-card:hover {
+.section button {
+    width: 100%;
+    padding: 12px 20px;
+    background: #ff7f50;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 5px;
+    transition: 0.3s;
+}
+.section button:hover {
+    background: #ffa07a;
     transform: scale(1.02);
-    box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+}
+
+/* ========================= */
+/* Скрытый контент           */
+.content {
+    display: none;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-left: 4px solid gold;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
 }
 
 /* ========================= */
 /* Формулы                  */
-/* ========================= */
 .formula {
     background: rgba(255,255,255,0.1);
     padding: 10px;
-    border-radius:10px;
-    margin: 10px 0;
+    border-radius: 8px;
+    margin: 5px 0;
     font-family: 'Courier New', monospace;
+    cursor: pointer;
+}
+.formula:hover {
+    background: rgba(255,255,255,0.2);
+}
+.formula-content {
+    display: none;
+    padding: 5px 10px;
+    font-family: 'Courier New', monospace;
+    background: rgba(255,255,255,0.05);
+    border-left: 3px solid #ffcc00;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 /* ========================= */
-/* Изображения и видео       */
-/* ========================= */
-img, video {
-    max-width: 100%;
-    border-radius: 15px;
-    margin:10px 0;
-    display:block;
-}
-
-/* ========================= */
-/* Разделы                  */
-/* ========================= */
-.section {
-    margin-bottom:30px;
-}
-
-/* ========================= */
-/* Анимация движущегося объекта */
-.moving-ball {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: #ff4500;
-    position: relative;
-    animation: moveBall 4s linear infinite alternate;
-}
-@keyframes moveBall {
-    0% { left: 0; top:0; }
-    25% { left: 50%; top:50px; }
-    50% { left: 80%; top:0; }
-    75% { left: 40%; top:80px; }
-    100% { left:0; top:0; }
+/* Адаптация под мобильные   */
+@media (max-width:600px){
+    header h1{font-size:1.8em;}
+    .section button{font-size:14px;}
 }
 </style>
 </head>
@@ -130,74 +110,97 @@ img, video {
     <h1>Электричество и Магнетизм</h1>
 </header>
 
-<nav>
-    <button onclick="showSection('terms')">Термины</button>
-    <button onclick="showSection('formulas')">Формулы</button>
-    <button onclick="showSection('images')">Схемы и картинки</button>
-    <button onclick="showSection('videos')">Видео</button>
-    <button onclick="showSection('animations')">Анимации</button>
-</nav>
-
 <div class="container">
 
-<!-- Термины -->
-<div id="terms" class="section">
-    <div class="term-card">
-        <h2>Электрический заряд</h2>
-        <p>Физическая величина, характеризующая взаимодействие тел через электромагнитное поле.</p>
+<!-- ========================= -->
+<!-- Основные определения      -->
+<!-- ========================= -->
+<div class="section">
+    <h2>Основные определения</h2>
+    <button onclick="toggleContent(this)">Электрический заряд</button>
+    <div class="content">Физическая величина, характеризующая способность тел взаимодействовать через электромагнитное поле.</div>
+
+    <button onclick="toggleContent(this)">Электрическое поле</button>
+    <div class="content">Поле, создаваемое электрическими зарядами, воздействующее на другие заряды силой.</div>
+
+    <button onclick="toggleContent(this)">Магнитное поле</button>
+    <div class="content">Поле, создаваемое движущимися зарядами и магнитными материалами, действующее на другие заряды и магниты.</div>
+
+    <button onclick="toggleContent(this)">Напряжение</button>
+    <div class="content">Разность потенциалов между двумя точками электрической цепи.</div>
+
+    <button onclick="toggleContent(this)">Сила тока</button>
+    <div class="content">Количество заряда, проходящего через поперечное сечение проводника за единицу времени.</div>
+</div>
+
+<!-- ========================= -->
+<!-- Формулы                  -->
+<!-- ========================= -->
+<div class="section">
+    <h2>Формулы</h2>
+    <div class="formula" onclick="toggleFormula(this)">Закон Ома
+        <div class="formula-content">I = U / R</div>
     </div>
-    <div class="term-card">
-        <h2>Электрическое поле</h2>
-        <p>Поле, создаваемое электрическими зарядами, воздействующее на другие заряды силой.</p>
+    <div class="formula" onclick="toggleFormula(this)">Закон Кулона
+        <div class="formula-content">F = k * (q₁ * q₂) / r²</div>
     </div>
-    <div class="term-card">
-        <h2>Магнитное поле</h2>
-        <p>Поле, создаваемое движущимися электрическими зарядами и магнитными материалами.</p>
+    <div class="formula" onclick="toggleFormula(this)">Напряженность электрического поля
+        <div class="formula-content">E = F / q</div>
+    </div>
+    <div class="formula" onclick="toggleFormula(this)">Сила Лоренца
+        <div class="formula-content">F = q(E + v × B)</div>
+    </div>
+    <div class="formula" onclick="toggleFormula(this)">Энергия конденсатора
+        <div class="formula-content">W = ½ * C * U²</div>
     </div>
 </div>
 
-<!-- Формулы -->
-<div id="formulas" class="section" style="display:none;">
-    <div class="formula">
-        <b>Закон Кулона:</b> F = k * (q1 * q2) / r²
+<!-- ========================= -->
+<!-- Применение               -->
+<!-- ========================= -->
+<div class="section">
+    <h2>Применение электричества и магнетизма</h2>
+    <button onclick="toggleContent(this)">В современном мире</button>
+    <div class="content">
+        Электричество и магнетизм используются повсюду: <br>
+        • В электроэнергетике и освещении<br>
+        • В компьютерах и телефонах<br>
+        • В электромобилях и транспорте<br>
+        • В медицинской технике (МРТ, электрокардиограмма)<br>
+        • В промышленности (электродвигатели, магнитные сепараторы)<br>
+        Значение этих явлений огромно — они обеспечивают технологический прогресс и комфорт человека.
     </div>
-    <div class="formula">
-        <b>Напряженность электрического поля:</b> E = F/q
-    </div>
-    <div class="formula">
-        <b>Закон Ампера (сила на проводник):</b> F = I * L × B
-    </div>
-</div>
-
-<!-- Картинки -->
-<div id="images" class="section" style="display:none;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Electric_field_cylindrical_conductor.svg/400px-Electric_field_cylindrical_conductor.svg.png" alt="Схема электрического поля">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Magnetic_field_around_wire.svg/400px-Magnetic_field_around_wire.svg.png" alt="Магнитное поле вокруг провода">
-</div>
-
-<!-- Видео -->
-<div id="videos" class="section" style="display:none;">
-    <video controls>
-        <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/3/3f/Moving_charge_and_field.webm/Moving_charge_and_field.webm.mp4" type="video/mp4">
-        Ваш браузер не поддерживает видео.
-    </video>
-</div>
-
-<!-- Анимации -->
-<div id="animations" class="section" style="display:none;">
-    <p>Пример движущегося заряда:</p>
-    <div class="moving-ball"></div>
 </div>
 
 </div>
 
 <script>
-function showSection(id){
-    let sections = document.querySelectorAll('.section');
-    sections.forEach(s => s.style.display = 'none');
-    document.getElementById(id).style.display = 'block';
+// =========================
+// Функция открытия/закрытия определений
+// =========================
+function toggleContent(btn){
+    const content = btn.nextElementSibling;
+    if(content.style.display === "block"){
+        content.style.display = "none";
+    } else {
+        content.style.display = "block";
+    }
+}
+
+// =========================
+// Функция открытия/закрытия формул
+// =========================
+function toggleFormula(el){
+    const formula = el.querySelector('.formula-content');
+    if(formula.style.display === "block"){
+        formula.style.display = "none";
+    } else {
+        formula.style.display = "block";
+    }
 }
 </script>
 
 </body>
 </html>
+
+   
