@@ -6,33 +6,42 @@
 <title>Электричество и Магнетизм</title>
 <style>
 /* ========================= */
-/* Основные стили            */
+/* Основные стили страницы   */
 /* ========================= */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: #1b1b2f;
-    color: #f0f0f0;
+    background: #0a0a20; /* темный фон для неонового эффекта */
+    color: #e0f7ff;
     line-height: 1.6;
 }
 
 /* ========================= */
-/* Заголовок                 */
-/* ========================= */
+/* Заголовок с неоновым свечением */
 header {
-    background: linear-gradient(90deg,#0f2027,#203a43,#2c5364);
     text-align: center;
-    padding: 20px 10px;
+    padding: 25px 10px;
+    background: #010114;
 }
 header h1 {
-    margin:0;
-    font-size:2.5em;
-    color: gold;
+    font-size: 3em;
+    color: #00ffff;
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff,
+        0 0 60px #00ffff;
+    animation: neonGlow 2s ease-in-out infinite alternate;
+}
+@keyframes neonGlow {
+    0% { text-shadow: 0 0 5px #00ffff,0 0 10px #00ffff,0 0 20px #00ffff; }
+    50% { text-shadow: 0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff; }
+    100% { text-shadow: 0 0 5px #00ffff,0 0 10px #00ffff,0 0 20px #00ffff; }
 }
 
 /* ========================= */
-/* Контейнер контента        */
-/* ========================= */
+/* Контейнер контента */
 .container {
     max-width: 900px;
     margin: 20px auto;
@@ -40,67 +49,106 @@ header h1 {
 }
 
 /* ========================= */
-/* Разделы с кнопками        */
-/* ========================= */
-.section {
-    margin-bottom: 30px;
-}
+/* Кнопки разделов */
 .section button {
     width: 100%;
-    padding: 12px 20px;
-    background: #ff7f50;
-    border: none;
-    border-radius: 10px;
+    padding: 14px 20px;
+    background: #000d1a;
+    border: 2px solid #00ffff;
+    border-radius: 12px;
     font-size: 16px;
     text-align: left;
     cursor: pointer;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    color: #00ffff;
     transition: 0.3s;
+    box-shadow: 0 0 5px #00ffff;
+    position: relative;
 }
 .section button:hover {
-    background: #ffa07a;
-    transform: scale(1.02);
+    transform: scale(1.03);
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+    background: #001133;
+}
+.section button::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #00ffff;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s;
+}
+.section button:hover::after {
+    width: 100%;
 }
 
 /* ========================= */
-/* Скрытый контент           */
+/* Скрытый контент */
 .content {
     display: none;
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    border-left: 4px solid gold;
-    background: rgba(255,255,255,0.05);
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-left: 5px solid #00ffff;
+    background: rgba(0, 255, 255, 0.05);
     border-radius: 8px;
+    animation: appear 0.4s ease-in;
+}
+@keyframes appear {
+    from { opacity: 0; transform: translateY(-5px);}
+    to { opacity: 1; transform: translateY(0);}
 }
 
 /* ========================= */
-/* Формулы                  */
+/* Формулы с неоновым свечением */
 .formula {
-    background: rgba(255,255,255,0.1);
-    padding: 10px;
-    border-radius: 8px;
-    margin: 5px 0;
+    background: #001133;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 6px 0;
     font-family: 'Courier New', monospace;
     cursor: pointer;
+    color: #00ffff;
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 5px #00ffff;
+    transition: 0.3s;
+    position: relative;
 }
 .formula:hover {
-    background: rgba(255,255,255,0.2);
+    background: #002244;
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
 }
 .formula-content {
     display: none;
-    padding: 5px 10px;
+    padding: 6px 10px;
     font-family: 'Courier New', monospace;
-    background: rgba(255,255,255,0.05);
-    border-left: 3px solid #ffcc00;
-    border-radius: 5px;
-    margin-bottom: 5px;
+    background: rgba(0, 255, 255, 0.05);
+    border-left: 4px solid #00ffff;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    animation: appear 0.3s ease-in;
+}
+.formula::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #00ffff;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s;
+}
+.formula:hover::after {
+    width: 100%;
 }
 
 /* ========================= */
-/* Адаптация под мобильные   */
+/* Адаптация под мобильные */
 @media (max-width:600px){
-    header h1{font-size:1.8em;}
-    .section button{font-size:14px;}
+    header h1 { font-size:2em; }
+    .section button { font-size:14px; }
+    .formula { font-size:14px; }
 }
 </style>
 </head>
@@ -112,9 +160,7 @@ header h1 {
 
 <div class="container">
 
-<!-- ========================= -->
-<!-- Основные определения      -->
-<!-- ========================= -->
+<!-- Основные определения -->
 <div class="section">
     <h2>Основные определения</h2>
     <button onclick="toggleContent(this)">Электрический заряд</button>
@@ -133,9 +179,7 @@ header h1 {
     <div class="content">Количество заряда, проходящего через поперечное сечение проводника за единицу времени.</div>
 </div>
 
-<!-- ========================= -->
-<!-- Формулы                  -->
-<!-- ========================= -->
+<!-- Формулы -->
 <div class="section">
     <h2>Формулы</h2>
     <div class="formula" onclick="toggleFormula(this)">Закон Ома
@@ -155,9 +199,7 @@ header h1 {
     </div>
 </div>
 
-<!-- ========================= -->
-<!-- Применение               -->
-<!-- ========================= -->
+<!-- Применение -->
 <div class="section">
     <h2>Применение электричества и магнетизма</h2>
     <button onclick="toggleContent(this)">В современном мире</button>
@@ -175,9 +217,7 @@ header h1 {
 </div>
 
 <script>
-// =========================
-// Функция открытия/закрытия определений
-// =========================
+// Функция раскрытия/скрытия определений
 function toggleContent(btn){
     const content = btn.nextElementSibling;
     if(content.style.display === "block"){
@@ -187,9 +227,7 @@ function toggleContent(btn){
     }
 }
 
-// =========================
-// Функция открытия/закрытия формул
-// =========================
+// Функция раскрытия/скрытия формул
 function toggleFormula(el){
     const formula = el.querySelector('.formula-content');
     if(formula.style.display === "block"){
@@ -202,5 +240,3 @@ function toggleFormula(el){
 
 </body>
 </html>
-
-   
