@@ -1,0 +1,136 @@
+/* ========================= */
+/* Основные стили страницы   */
+/* ========================= */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #1b1b2f;
+    color: #f0f0f0;
+    line-height: 1.6;
+}
+
+/* ========================= */
+/* Заголовок                 */
+/* ========================= */
+header {
+    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+    text-align: center;
+    padding: 20px 10px;
+}
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: gold;
+}
+
+/* ========================= */
+/* Навигация по разделам      */
+/* ========================= */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: #222;
+    padding: 10px 0;
+}
+nav button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    background: #ff7f50;
+    cursor: pointer;
+    transition: 0.3s;
+}
+nav button:hover {
+    background: #ffa07a;
+    transform: scale(1.05);
+}
+
+/* ========================= */
+/* Основной контейнер        */
+/* ========================= */
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+/* ========================= */
+/* Карточки с терминами      */
+/* ========================= */
+.term-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.term-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* ========================= */
+/* Формулы                  */
+/* ========================= */
+.formula {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1em;
+}
+
+/* ========================= */
+/* Изображения и видео       */
+/* ========================= */
+img, video {
+    max-width: 100%;
+    border-radius: 15px;
+    margin: 10px 0;
+    display: block;
+}
+
+/* ========================= */
+/* Разделы                  */
+/* ========================= */
+.section {
+    margin-bottom: 30px;
+}
+
+/* ========================= */
+/* Анимация движущегося объекта */
+.moving-ball {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ff4500;
+    position: relative;
+    animation: moveBall 4s linear infinite alternate;
+}
+@keyframes moveBall {
+    0% { left: 0; top: 0; }
+    25% { left: 50%; top: 50px; }
+    50% { left: 80%; top: 0; }
+    75% { left: 40%; top: 80px; }
+    100% { left: 0; top: 0; }
+}
+
+/* ========================= */
+/* Адаптация под мобильные устройства */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.8em;
+    }
+    nav button {
+        width: 90%;
+        margin: 5px auto;
+        font-size: 14px;
+    }
+    .formula {
+        font-size: 1em;
+    }
+}
