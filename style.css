@@ -4,7 +4,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: #0a0a20; /* темный фон для неонового эффекта */
+    background: linear-gradient(120deg, #0a0a20, #001144, #0a0a20); /* темный фон */
     color: #e0f7ff;
     line-height: 1.6;
 }
@@ -27,7 +27,6 @@ header h1 {
         0 0 60px #00ffff;
     animation: neonGlow 2s ease-in-out infinite alternate;
 }
-
 @keyframes neonGlow {
     0% { text-shadow: 0 0 5px #00ffff,0 0 10px #00ffff,0 0 20px #00ffff; }
     50% { text-shadow: 0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff; }
@@ -57,11 +56,25 @@ header h1 {
     color: #00ffff;
     transition: 0.3s;
     box-shadow: 0 0 5px #00ffff;
+    position: relative;
 }
 .section button:hover {
     transform: scale(1.03);
     box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
     background: #001133;
+}
+.section button::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #00ffff;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s;
+}
+.section button:hover::after {
+    width: 100%;
 }
 
 /* ========================= */
@@ -93,6 +106,7 @@ header h1 {
     border: 1px solid #00ffff;
     box-shadow: 0 0 5px #00ffff;
     transition: 0.3s;
+    position: relative;
 }
 .formula:hover {
     background: #002244;
@@ -108,13 +122,7 @@ header h1 {
     margin-bottom: 6px;
     animation: appear 0.3s ease-in;
 }
-
-/* ========================= */
-/* Эффект «мигающего разряда» на кнопках и формулах */
-.section button, .formula {
-    position: relative;
-}
-.section button::after, .formula::after {
+.formula::after {
     content: '';
     position: absolute;
     width: 0%;
@@ -124,7 +132,7 @@ header h1 {
     bottom: 0;
     transition: width 0.3s;
 }
-.section button:hover::after, .formula:hover::after {
+.formula:hover::after {
     width: 100%;
 }
 
