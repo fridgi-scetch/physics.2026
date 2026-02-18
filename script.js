@@ -1,53 +1,116 @@
-// =========================
-// Переключение разделов
-// =========================
-function showSection(id) {
-    // Скрываем все разделы
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => section.style.display = 'none');
 
-    // Показываем выбранный раздел
-    const activeSection = document.getElementById(id);
-    if (activeSection) {
-        activeSection.style.display = 'block';
-    }
+/* ========================= */
+/* Основные стили страницы   */
+/* ========================= */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #0a0a23, #001144, #0a0a23);
+    color: #f0f0f0;
+    line-height: 1.6;
 }
 
-// =========================
-// Пример анимации движущихся зарядов (добавление новых шаров)
-// =========================
-function addMovingCharges(count) {
-    const container = document.querySelector('#animations');
-    for (let i = 0; i < count; i++) {
-        const ball = document.createElement('div');
-        ball.className = 'moving-ball';
-        // Случайная задержка анимации для каждого шара
-        ball.style.animationDelay = (Math.random() * 4) + 's';
-        container.appendChild(ball);
-    }
+/* ========================= */
+/* Заголовок с электрическим свечением */
+header {
+    text-align: center;
+    padding: 25px 10px;
+    background: linear-gradient(90deg, #001144, #0a0a23);
+}
+header h1 {
+    font-size: 2.8em;
+    color: #00ffff;
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #00ffff,
+        0 0 60px #00ffff;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff; }
+    50% { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff; }
+    100% { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff; }
 }
 
-// =========================
-// Пример интерактивной формулы
-// =========================
-function insertFormula(containerId, formulaText) {
-    const container = document.getElementById(containerId);
-    const formulaDiv = document.createElement('div');
-    formulaDiv.className = 'formula';
-    formulaDiv.textContent = formulaText;
-    container.appendChild(formulaDiv);
+/* ========================= */
+/* Контейнер контента */
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 10px;
 }
 
-// =========================
-// Инициализация при загрузке страницы
-// =========================
-window.addEventListener('DOMContentLoaded', () => {
-    // Показываем раздел "Термины" по умолчанию
-    showSection('terms');
+/* ========================= */
+/* Разделы с кнопками        */
+.section button {
+    width: 100%;
+    padding: 14px 20px;
+    background: linear-gradient(90deg, #00ffff, #0000ff);
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    margin-bottom: 6px;
+    color: #ffffff;
+    transition: 0.3s;
+    box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+}
+.section button:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+    background: linear-gradient(90deg, #00ffff, #00ff00);
+}
 
-    // Добавляем 3 движущихся заряда в анимацию
-    addMovingCharges(3);
+/* ========================= */
+/* Скрытый контент           */
+.content {
+    display: none;
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-left: 5px solid #00ffff;
+    background: rgba(0, 255, 255, 0.05);
+    border-radius: 8px;
+    animation: appear 0.4s ease-in;
+}
+@keyframes appear {
+    from { opacity: 0; transform: translateY(-5px);}
+    to { opacity: 1; transform: translateY(0);}
+}
 
-    // Пример добавления дополнительной формулы динамически
-    insertFormula('formulas', 'Сила Лоренца: F = q(E + v × B)');
-});
+/* ========================= */
+/* Формулы                  */
+.formula {
+    background: rgba(0, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 10px;
+    margin: 6px 0;
+    font-family: 'Courier New', monospace;
+    cursor: pointer;
+    box-shadow: 0 0 5px #00ffff;
+    transition: 0.3s;
+}
+.formula:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+}
+.formula-content {
+    display: none;
+    padding: 6px 10px;
+    font-family: 'Courier New', monospace;
+    background: rgba(0, 255, 255, 0.05);
+    border-left: 4px solid #00ffcc;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    animation: appear 0.3s ease-in;
+}
+
+/* ========================= */
+/* Адаптация под мобильные   */
+@media (max-width:600px){
+    header h1{font-size:1.8em;}
+    .section button{font-size:14px;}
+    .formula{font-size:14px;}
+}
