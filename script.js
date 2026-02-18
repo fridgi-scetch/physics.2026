@@ -1,8 +1,8 @@
 // =========================
-// Функция открытия/закрытия определений
+// Функция раскрытия/скрытия определений
 // =========================
-function toggleContent(btn) {
-    const content = btn.nextElementSibling;
+function toggleContent(button) {
+    const content = button.nextElementSibling;
     if (content.style.display === "block") {
         content.style.display = "none";
     } else {
@@ -11,7 +11,7 @@ function toggleContent(btn) {
 }
 
 // =========================
-// Функция открытия/закрытия формул
+// Функция раскрытия/скрытия формул
 // =========================
 function toggleFormula(el) {
     const formula = el.querySelector('.formula-content');
@@ -23,9 +23,9 @@ function toggleFormula(el) {
 }
 
 // =========================
-// Дополнительно: анимация свечения кнопок
+// Дополнительный неоновый эффект для кнопок и формул
 // =========================
-function addGlowEffect() {
+function addNeonHoverEffect() {
     const buttons = document.querySelectorAll('.section button, .formula');
     buttons.forEach(btn => {
         btn.addEventListener('mouseover', () => {
@@ -38,9 +38,8 @@ function addGlowEffect() {
 }
 
 // =========================
-// Инициализация при загрузке страницы
+// Инициализация после загрузки страницы
 // =========================
 window.addEventListener('DOMContentLoaded', () => {
-    // Добавляем эффект свечения на кнопки
-    addGlowEffect();
+    addNeonHoverEffect();
 });
