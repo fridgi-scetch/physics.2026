@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Электричество и Магнетизм</title>
+<style>
+/* ========================= */
+/* Основные стили            */
+/* ========================= */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #1b1b2f;
+    color: #f0f0f0;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(90deg,#0f2027,#203a43,#2c5364);
+    text-align: center;
+    padding: 20px 10px;
+}
+
+header h1 {
+    margin:0;
+    font-size:2.5em;
+    color: gold;
+}
+
+/* ========================= */
+/* Навигация по разделам      */
+/* ========================= */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background: #222;
+    padding: 10px 0;
+}
+nav button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border:none;
+    border-radius:10px;
+    background: #ff7f50;
+    cursor: pointer;
+    transition: 0.3s;
+}
+nav button:hover {
+    background:#ffa07a;
+    transform: scale(1.05);
+}
+
+/* ========================= */
+/* Основной контейнер        */
+/* ========================= */
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+/* ========================= */
+/* Карточки с терминами      */
+/* ========================= */
+.term-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    padding:15px;
+    margin-bottom:15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.term-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+}
+
+/* ========================= */
+/* Формулы                  */
+/* ========================= */
+.formula {
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius:10px;
+    margin: 10px 0;
+    font-family: 'Courier New', monospace;
+}
+
+/* ========================= */
+/* Изображения и видео       */
+/* ========================= */
+img, video {
+    max-width: 100%;
+    border-radius: 15px;
+    margin:10px 0;
+    display:block;
+}
+
+/* ========================= */
+/* Разделы                  */
+/* ========================= */
+.section {
+    margin-bottom:30px;
+}
+
+/* ========================= */
+/* Анимация движущегося объекта */
+.moving-ball {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #ff4500;
+    position: relative;
+    animation: moveBall 4s linear infinite alternate;
+}
+@keyframes moveBall {
+    0% { left: 0; top:0; }
+    25% { left: 50%; top:50px; }
+    50% { left: 80%; top:0; }
+    75% { left: 40%; top:80px; }
+    100% { left:0; top:0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Электричество и Магнетизм</h1>
+</header>
+
+<nav>
+    <button onclick="showSection('terms')">Термины</button>
+    <button onclick="showSection('formulas')">Формулы</button>
+    <button onclick="showSection('images')">Схемы и картинки</button>
+    <button onclick="showSection('videos')">Видео</button>
+    <button onclick="showSection('animations')">Анимации</button>
+</nav>
+
+<div class="container">
+
+<!-- Термины -->
+<div id="terms" class="section">
+    <div class="term-card">
+        <h2>Электрический заряд</h2>
+        <p>Физическая величина, характеризующая взаимодействие тел через электромагнитное поле.</p>
+    </div>
+    <div class="term-card">
+        <h2>Электрическое поле</h2>
+        <p>Поле, создаваемое электрическими зарядами, воздействующее на другие заряды силой.</p>
+    </div>
+    <div class="term-card">
+        <h2>Магнитное поле</h2>
+        <p>Поле, создаваемое движущимися электрическими зарядами и магнитными материалами.</p>
+    </div>
+</div>
+
+<!-- Формулы -->
+<div id="formulas" class="section" style="display:none;">
+    <div class="formula">
+        <b>Закон Кулона:</b> F = k * (q1 * q2) / r²
+    </div>
+    <div class="formula">
+        <b>Напряженность электрического поля:</b> E = F/q
+    </div>
+    <div class="formula">
+        <b>Закон Ампера (сила на проводник):</b> F = I * L × B
+    </div>
+</div>
+
+<!-- Картинки -->
+<div id="images" class="section" style="display:none;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Electric_field_cylindrical_conductor.svg/400px-Electric_field_cylindrical_conductor.svg.png" alt="Схема электрического поля">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Magnetic_field_around_wire.svg/400px-Magnetic_field_around_wire.svg.png" alt="Магнитное поле вокруг провода">
+</div>
+
+<!-- Видео -->
+<div id="videos" class="section" style="display:none;">
+    <video controls>
+        <source src="https://upload.wikimedia.org/wikipedia/commons/transcoded/3/3f/Moving_charge_and_field.webm/Moving_charge_and_field.webm.mp4" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+    </video>
+</div>
+
+<!-- Анимации -->
+<div id="animations" class="section" style="display:none;">
+    <p>Пример движущегося заряда:</p>
+    <div class="moving-ball"></div>
+</div>
+
+</div>
+
+<script>
+function showSection(id){
+    let sections = document.querySelectorAll('.section');
+    sections.forEach(s => s.style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+}
+</script>
+
+</body>
+</html>
