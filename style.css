@@ -1,145 +1,489 @@
-/* ========================= */
-/* Основные стили страницы   */
-/* ========================= */
-body {
+/* ===== НЕОНО-ФИЗИЧЕСКИЙ СТИЛЬ ===== */
+/* Электричество + магнетизм + киберпанк-эстетика */
+/* Глюки, свечение, линии поля, частицы */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap');
+
+* {
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(120deg, #0a0a20, #001144, #0a0a20); /* темный фон */
-    color: #e0f7ff;
-    line-height: 1.6;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* ========================= */
-/* Заголовок с неоновым свечением */
+body {
+    font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+    background: #0b0e1f; /* космический тёмно-синий */
+    color: #e0f2fe;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Анимированный фон с частицами и линиями поля */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.05) 0%, transparent 35%),
+        repeating-linear-gradient(45deg, rgba(0, 255, 255, 0.02) 0px, rgba(0, 255, 255, 0.02) 2px, transparent 2px, transparent 8px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Эффект силовых линий (анимированные) */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M10 10 Q 50 0, 90 10 M20 30 Q 60 20, 90 30 M5 60 Q 45 70, 95 60 M30 80 Q 60 90, 95 80" stroke="rgba(0,255,255,0.03)" fill="none" stroke-width="0.5"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+    animation: fieldLines 40s linear infinite;
+}
+
+@keyframes fieldLines {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-20px) translateY(-20px); }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(10, 20, 40, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 3rem;
+    box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.2),
+        0 0 60px rgba(255, 0, 255, 0.1),
+        inset 0 0 30px rgba(0, 255, 255, 0.1);
+    padding: 2.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Голографический эффект краёв */
+.container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        #00ffff, #ff00ff, #00ffff, #ff00ff);
+    background-size: 300% 300%;
+    border-radius: 3rem;
+    z-index: -1;
+    animation: neonBorder 6s ease infinite;
+    opacity: 0.3;
+}
+
+@keyframes neonBorder {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 header {
     text-align: center;
-    padding: 25px 10px;
-    background: #010114;
-}
-header h1 {
-    font-size: 3em;
-    color: #00ffff;
-    text-shadow:
-        0 0 5px #00ffff,
-        0 0 10px #00ffff,
-        0 0 20px #00ffff,
-        0 0 40px #00ffff,
-        0 0 60px #00ffff;
-    animation: neonGlow 2s ease-in-out infinite alternate;
-}
-@keyframes neonGlow {
-    0% { text-shadow: 0 0 5px #00ffff,0 0 10px #00ffff,0 0 20px #00ffff; }
-    50% { text-shadow: 0 0 10px #00ffff,0 0 20px #00ffff,0 0 40px #00ffff; }
-    100% { text-shadow: 0 0 5px #00ffff,0 0 10px #00ffff,0 0 20px #00ffff; }
-}
-
-/* ========================= */
-/* Контейнер контента */
-.container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 10px;
-}
-
-/* ========================= */
-/* Кнопки разделов */
-.section button {
-    width: 100%;
-    padding: 14px 20px;
-    background: #000d1a;
-    border: 2px solid #00ffff;
-    border-radius: 12px;
-    font-size: 16px;
-    text-align: left;
-    cursor: pointer;
-    margin-bottom: 6px;
-    color: #00ffff;
-    transition: 0.3s;
-    box-shadow: 0 0 5px #00ffff;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid;
+    border-image: repeating-linear-gradient(90deg, #00ffff, #ff00ff, #00ffff) 1;
     position: relative;
 }
-.section button:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
-    background: #001133;
-}
-.section button::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background: #00ffff;
-    left: 0;
-    bottom: 0;
-    transition: width 0.3s;
-}
-.section button:hover::after {
-    width: 100%;
+
+h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, #fff, #00ffff, #ff00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.5),
+        0 0 20px rgba(255, 0, 255, 0.3);
+    animation: flicker 3s infinite;
+    margin-bottom: 0.5rem;
 }
 
-/* ========================= */
-/* Скрытый контент */
-.content {
-    display: none;
-    padding: 12px 15px;
-    margin-bottom: 12px;
-    border-left: 5px solid #00ffff;
-    background: rgba(0, 255, 255, 0.05);
-    border-radius: 8px;
-    animation: appear 0.4s ease-in;
-}
-@keyframes appear {
-    from { opacity: 0; transform: translateY(-5px);}
-    to { opacity: 1; transform: translateY(0);}
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.95; text-shadow: 0 0 20px cyan, 0 0 40px magenta; }
 }
 
-/* ========================= */
-/* Формулы с неоновым свечением */
-.formula {
-    background: #001133;
-    padding: 12px;
-    border-radius: 10px;
-    margin: 6px 0;
-    font-family: 'Courier New', monospace;
-    cursor: pointer;
-    color: #00ffff;
+.subhead {
+    font-size: 1.4rem;
+    color: #b0f0ff;
+    background: rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    border-radius: 40px;
     border: 1px solid #00ffff;
-    box-shadow: 0 0 5px #00ffff;
-    transition: 0.3s;
-    position: relative;
-}
-.formula:hover {
-    background: #002244;
-    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
-}
-.formula-content {
-    display: none;
-    padding: 6px 10px;
-    font-family: 'Courier New', monospace;
-    background: rgba(0, 255, 255, 0.05);
-    border-left: 4px solid #00ffff;
-    border-radius: 6px;
-    margin-bottom: 6px;
-    animation: appear 0.3s ease-in;
-}
-.formula::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background: #00ffff;
-    left: 0;
-    bottom: 0;
-    transition: width 0.3s;
-}
-.formula:hover::after {
-    width: 100%;
+    box-shadow: 0 0 15px cyan;
+    letter-spacing: 1px;
 }
 
-/* ========================= */
-/* Адаптация под мобильные */
-@media (max-width:600px){
-    header h1 { font-size:2em; }
-    .section button { font-size:14px; }
-    .formula { font-size:14px; }
+/* Сетка карточек */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 2.5rem 0;
+}
+
+.card {
+    background: rgba(5, 15, 30, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 255, 255, 0.4);
+    border-radius: 2.5rem;
+    padding: 2rem;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.2),
+        inset 0 0 20px rgba(255, 0, 255, 0.1);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Неоновое свечение при ховере с эффектом бегущей волны */
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #ff00ff;
+    box-shadow: 
+        0 0 30px #00ffff,
+        0 0 60px #ff00ff,
+        inset 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+    transition: left 0.7s;
+}
+
+.card:hover::before {
+    left: 100%;
+}
+
+.card h2 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #00ffff;
+    text-shadow: 0 0 8px cyan;
+    border-left: 5px solid #ff00ff;
+    padding-left: 1.2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card h2 i {
+    color: #ff00ff;
+    filter: drop-shadow(0 0 8px magenta);
+    font-size: 2.2rem;
+}
+
+.formula-block {
+    background: rgba(0, 20, 40, 0.7);
+    border: 1px solid #00ffff;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin: 1.2rem 0;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    position: relative;
+}
+
+.formula-block::after {
+    content: '⚡';
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    color: rgba(0, 255, 255, 0.3);
+    font-size: 1.5rem;
+}
+
+.formula {
+    font-family: 'Courier New', monospace;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 0 10px cyan, 0 0 20px magenta;
+    text-align: center;
+    margin: 0.5rem 0;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    letter-spacing: 1px;
+}
+
+.unit {
+    display: inline-block;
+    background: linear-gradient(45deg, #00ccff, #ff00cc);
+    color: #0b0e1f;
+    font-weight: bold;
+    padding: 0.2rem 1.2rem;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    box-shadow: 0 0 15px #00ffff;
+    text-transform: uppercase;
+}
+
+ul, p {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+    color: #d0f0ff;
+}
+
+li {
+    margin-left: 1.5rem;
+    margin-bottom: 0.4rem;
+    list-style-type: '▹ ';
+    color: #b0e0ff;
+}
+
+li::marker {
+    color: #ff00ff;
+    font-size: 1.2rem;
+}
+
+.badge {
+    background: linear-gradient(45deg, #00ffff, #ff00ff);
+    color: #0a0f1f;
+    font-weight: 700;
+    padding: 0.3rem 1.5rem;
+    border-radius: 30px;
+    display: inline-block;
+    font-size: 0.9rem;
+    box-shadow: 0 0 15px #00ffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.comparison {
+    background: rgba(20, 10, 40, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid #ff00ff;
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+}
+
+.comparison h3 {
+    color: #ff88ff;
+    text-shadow: 0 0 10px magenta;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(0, 30, 50, 0.6);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 20px cyan;
+}
+
+th {
+    background: rgba(0, 255, 255, 0.2);
+    color: #00ffff;
+    font-weight: 600;
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ff00ff;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+    color: #c0ffff;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+.highlight {
+    background: rgba(255, 0, 255, 0.2);
+    color: #ffaaff;
+    font-weight: 500;
+}
+
+.section-divider {
+    background: rgba(10, 20, 40, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid #00ffff;
+    border-radius: 3rem;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.2);
+}
+
+/* Стили для блоков с фактами и применениями */
+div[style*="background: #fbf5dd"] {
+    background: rgba(50, 10, 50, 0.7) !important;
+    border: 1px solid #ff00ff;
+    box-shadow: 0 0 25px magenta;
+}
+
+div[style*="background: #ddeeff"] {
+    background: rgba(0, 30, 60, 0.8) !important;
+    border: 1px solid #00ffff;
+    box-shadow: 0 0 25px cyan;
+}
+
+/* Список формул внизу */
+div[style*="background: #cfe2ff"] {
+    background: rgba(20, 0, 30, 0.8) !important;
+    border: 1px solid #ff88ff;
+    border-radius: 3rem;
+    box-shadow: 0 0 30px magenta;
+}
+
+.grid[style*="grid-template-columns: repeat(3,1fr)"] div {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid #00ffff;
+    color: #b0ffff;
+    font-weight: 500;
+    text-align: center;
+    box-shadow: 0 0 10px cyan;
+    transition: all 0.3s;
+}
+
+.grid[style*="grid-template-columns: repeat(3,1fr)"] div:hover {
+    border-color: #ff00ff;
+    box-shadow: 0 0 20px magenta;
+    transform: scale(1.05);
+}
+
+/* Кнопки/бэйджи в техно-стиле */
+.badge, .unit {
+    position: relative;
+    overflow: hidden;
+}
+
+.badge::after, .unit::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px);
+    animation: scan 6s linear infinite;
+}
+
+@keyframes scan {
+    0% { transform: translateX(-30%) translateY(-30%) rotate(0deg); }
+    100% { transform: translateX(30%) translateY(30%) rotate(0deg); }
+}
+
+footer {
+    margin-top: 4rem;
+    text-align: center;
+    color: #80ffff;
+    padding-top: 2rem;
+    border-top: 2px solid;
+    border-image: linear-gradient(90deg, transparent, cyan, magenta, transparent) 1;
+    font-size: 1.1rem;
+    text-shadow: 0 0 5px cyan;
+    position: relative;
+}
+
+footer p {
+    color: #a0f0f0;
+}
+
+/* Адаптивность */
+@media (max-width: 700px) {
+    h1 { font-size: 2.8rem; }
+    .container { padding: 1.5rem; }
+    .two-col { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: 1fr; }
+}
+
+/* Неоновые глюки для заголовков разделов */
+h2, h3 {
+    position: relative;
+    display: inline-block;
+}
+
+h2:hover, h3:hover {
+    animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+/* Дополнительный эффект: искры при наведении на формулы */
+.formula:hover {
+    animation: spark 0.5s;
+}
+
+@keyframes spark {
+    0% { text-shadow: 0 0 10px cyan, 0 0 20px magenta; }
+    50% { text-shadow: 0 0 30px white, 0 0 50px cyan, 0 0 70px magenta; }
+    100% { text-shadow: 0 0 10px cyan, 0 0 20px magenta; }
+}
+
+/* Стилизация скроллбара в стиле неон */
+::-webkit-scrollbar {
+    width: 12px;
+    background: #0a0f1f;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00ffff, #ff00ff);
+    border-radius: 10px;
+    box-shadow: 0 0 10px cyan;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff00ff, #00ffff);
 }
